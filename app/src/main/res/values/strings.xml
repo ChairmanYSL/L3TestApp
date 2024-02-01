@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">EMV L3 APP</string>
+    <string name="menu0">菜单1</string>
+    <string name="button_startTrans">开始交易</string>
+    <string name="button_vireChecksum">内核版本</string>
+    <string name="button_paramManage">参数管理</string>
+    <string name="button_autoTest">自动测试</string>
+    <string name="button_communicateType">通讯方式</string>
+    <string name="button_transLog">交易日志</string>
+    <string name="menu1">测试菜单</string>
+    <string name="button_version">版本信息</string>
+    <string name="button_addTestAID">添加测试AID</string>
+    <string name="button_sendTCP">发送TCP</string>
+    <string name="button_outcome">Outcome</string>
+    <string name="button_apdu">APDU</string>
+    <string name="button_random">随机数测试</string>
+    <string name="button_sha1">SHA1测试</string>
+    <string name="button_display">Display</string>
+</resources>

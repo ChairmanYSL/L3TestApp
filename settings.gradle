@@ -1,0 +1,25 @@
+pluginManagement {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+dependencyResolutionManagement {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0'
+    }
+}
+
+rootProject.name = "EMV L3 APP"
+include ':app'

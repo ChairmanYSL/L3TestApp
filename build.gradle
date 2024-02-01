@@ -1,0 +1,19 @@
+// 根级别 build.gradle
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
