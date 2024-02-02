@@ -16,75 +16,14 @@
             android:text="@string/menu0"
             android:textSize="80px"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:gravity="center"
+            android:id="@+id/textView_title">
         </TextView>
     </LinearLayout>
-
-    <GridLayout
+    
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="2"
-        android:rowCount="3"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-            android:text="@string/button_startTrans"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_vireChecksum"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_paramManage"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_autoTest"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_communicateType"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center|top"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_transLog"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center|top"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-    </GridLayout>
+        android:id="@+id/viewPager">
+    </android.support.v4.view.ViewPager>
 </LinearLayout>

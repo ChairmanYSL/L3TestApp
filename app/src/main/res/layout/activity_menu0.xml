@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal">
 
         <Button
-            android:text="@string/button_version"
+            android:text="@string/button_startTrans"
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -22,7 +22,7 @@
         </Button>
 
         <Button
-            android:text="@string/button_addTestAID"
+            android:text="@string/button_vireChecksum"
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -32,7 +32,7 @@
         </Button>
 
         <Button
-            android:text="@string/button_sendTCP"
+            android:text="@string/button_paramManage"
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -42,7 +42,7 @@
         </Button>
 
         <Button
-            android:text="@string/button_outcome"
+            android:text="@string/button_autoTest"
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -52,7 +52,7 @@
         </Button>
 
         <Button
-            android:text="@string/button_apdu"
+            android:text="@string/button_communicateType"
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -62,7 +62,7 @@
         </Button>
 
         <Button
-            android:text="@string/button_random"
+            android:text="@string/button_transLog"
             android:layout_width="180dp"
             android:layout_height="60dp"
             android:gravity="center"

@@ -5,6 +5,10 @@ plugins {
 android {
     compileSdk 26
 
+    compileOptions{
+        encoding = 'UTF-8'
+    }
+
     defaultConfig {
         applicationId "com.example.EMVL3app"
         minSdk 15
