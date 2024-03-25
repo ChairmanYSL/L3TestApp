@@ -16,4 +16,19 @@
     <string name="button_random">随机数测试</string>
     <string name="button_sha1">SHA1测试</string>
     <string name="button_display">Display</string>
+    <string name="select_commu_type_title">请选择后台通讯方式</string>
+    <string name="select_serial_port">串口</string>
+    <string name="select_network">网络</string>
+    <string name="title_inputpin">请输入密码</string>
+    <string name="button_downloadaid">下载AID</string>
+    <string name="button_downloadcapk">下载CAPK</string>
+    <string name="button_downloadtermparam">下载终端参数</string>
+    <string name="button_downloadexcpfile">下载异常文件</string>
+    <string name="button_downloadrevokey">下载回收公钥</string>
+    <string name="button_downloaddrl">下载DRL</string>
+    <string name="title_inputipaddr">请输入后台IP地址</string>
+    <string name="button_confirm">确认</string>
+    <string name="button_cancel">取消</string>
+    <string name="text_ipaddr">IP地址</string>
+    <string name="text_port">端口号</string>
 </resources>

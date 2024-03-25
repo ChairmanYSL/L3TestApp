@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:text="@string/button_downloadaid"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/button_DownloadAID">
+        </Button>
+
+        <Button
+            android:text="@string/button_downloadcapk"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/button_DownloadCAPK">
+        </Button>
+
+        <Button
+            android:text="@string/button_downloadtermparam"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/button_DownloadTermParam">
+        </Button>
+
+        <Button
+            android:text="@string/button_downloadexcpfile"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/button_DownloadExcpFile">
+        </Button>
+
+        <Button
+            android:text="@string/button_downloadrevokey"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center|top"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/button_DownloadRevokey">
+        </Button>
+
+        <Button
+            android:text="@string/button_downloaddrl"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center|top"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/button_DownloadDRL">
+        </Button>
+    </GridLayout>
+</LinearLayout>

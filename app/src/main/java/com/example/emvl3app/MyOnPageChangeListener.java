@@ -1,0 +1,28 @@
+package com.example.emvl3app;
+
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+
+public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+    private final MainActivity activity;
+
+    public MyOnPageChangeListener(MainActivity mainActivity){
+        this.activity = mainActivity;
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        Log.d("lishiyao", "onPageSelected: position = "+ position);
+        activity.updateTitle(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+}
