@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioTrack;
 import android.os.Handler;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.szzt.android.util.SzztDebug;
 import com.szzt.sdk.device.Device;
@@ -37,20 +38,24 @@ public class MainApplication extends Application {
     LocalBroadcastManager mLocalBroadcastManager;
     public static String ACTION_SERVICE_CONNECTED = "DEVICEMANAGER_SERVICE_CONNECTED";
     public static String ACTION_SERVICE_DISCONNECTED = "DEVICEMANAGER_SERVICE_DISCONNECTED";
-    public TCPClient tcpClient;
     public SerialPortManager serialPortManager;
     public SerialPort serialPort;
+    private static MainApplication instance;
 
     @Override
     public void onCreate() {
+        super.onCreate();
+        instance = this;
+
         mDeviceManager = DeviceManager.createInstance(this);
         mDeviceManager.start(deviceManagerListener);
         getSystemManager();
         mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
-        super.onCreate();
-        tcpClient = new TCPClient();
-        Log.d("lishiyao", "onCreate: after create tcpclient instance pointer is :" + tcpClient);
         serialPortManager = SerialPortManager.getInstance(this);
+    }
+
+    public static MainApplication getInstance(){
+        return instance;
     }
 
     public SerialPort getSerialPortWrapperImpl() {
@@ -90,9 +95,6 @@ public class MainApplication extends Application {
         return mDeviceManager.getEmvInterface();
     }
 
-    public TCPClient getTcpClient(){
-        return tcpClient;
-    }
 
     public ContactlessCardReader getContactlessCardReader() {
         Device[] contactlessCards = mDeviceManager
@@ -152,11 +154,6 @@ public class MainApplication extends Application {
         DeviceManager.destroy();
         mDeviceManager = null;
         super.onTerminate();
-        try {
-            tcpClient.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public CameraScan getCameraScanImpl() {

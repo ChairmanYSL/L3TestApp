@@ -4,29 +4,32 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/layout_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/select_commu_type_title"
-            android:textSize="80px"
+            android:textSize="30sp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:id="@+id/textView_title">
+            android:id="@+id/textView_titleCommu">
         </TextView>
     </LinearLayout>
 
+    <!-- GridLayout 现在位于 LinearLayout 下方 -->
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:columnCount="2"
         android:rowCount="1"
-        android:layout_gravity="center_horizontal">
-
+        android:layout_below="@id/layout_title"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp">
         <Button
             android:text="@string/select_serial_port"
             android:layout_width="180dp"
@@ -34,7 +37,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:padding="10dp"
+            android:textSize="30sp"
             android:id="@+id/button_serial">
         </Button>
 
@@ -45,7 +48,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:padding="10dp"
+            android:textSize="30sp"
             android:id="@+id/button_tcp">
         </Button>
     </GridLayout>

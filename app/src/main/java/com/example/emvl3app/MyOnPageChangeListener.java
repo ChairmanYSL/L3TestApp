@@ -1,7 +1,8 @@
 package com.example.emvl3app;
 
-import android.support.v4.view.ViewPager;
 import android.util.Log;
+
+import androidx.viewpager.widget.ViewPager;
 
 public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
     private final MainActivity activity;

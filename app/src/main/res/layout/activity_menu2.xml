@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
@@ -16,48 +16,47 @@
         android:useDefaultMargins="true">
 
         <Button
-            android:text="@string/button_startTrans"
+            android:text="@string/button_sendTCP"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:gravity="center"
             android:layout_gravity="fill_horizontal"
             android:layout_columnWeight="1"
             android:textSize="30sp"
-            android:id="@+id/button_StartTrans">
+            android:id="@+id/button_sendtcp">
         </Button>
 
         <Button
-            android:text="@string/button_vireChecksum"
+            android:text="@string/button_outcome"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:gravity="center"
             android:layout_gravity="fill_horizontal"
             android:layout_columnWeight="1"
             android:textSize="30sp"
-            android:id="@+id/button_KernelVer">
+            android:id="@+id/button_outcome_test">
         </Button>
 
         <Button
-            android:text="@string/button_paramManage"
+            android:text="@string/button_apdu"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:gravity="center"
             android:layout_gravity="fill_horizontal"
             android:layout_columnWeight="1"
             android:textSize="30sp"
-            android:id="@+id/button_ParamManage">
+            android:id="@+id/button_apdu_test">
         </Button>
 
         <Button
-            android:text="@string/button_autoTest"
+            android:text="@string/button_random"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:gravity="center"
             android:layout_gravity="fill_horizontal"
             android:layout_columnWeight="1"
             android:textSize="30sp"
-            android:id="@+id/button_AutoTest">
+            android:id="@+id/button_random_test">
         </Button>
-
     </GridLayout>
 </LinearLayout>

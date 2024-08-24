@@ -34,12 +34,12 @@ public class TransFlowProcessor {
     public TransFlowProcessor(byte [] recvData, Context context, int commuType) {
         this.recvData = recvData;
         this.context = context;
-        this.mainApplication = SZZTApplication.getInstance().getMainApplication();
+        this.mainApplication =MainApplication.getInstance();
         this.smartCardReader = mainApplication.getSmartCardReader();
         this.contactlessCardReader = mainApplication.getContactlessCardReader();
         this.commuType = commuType;
         this.dataTransformer = new DataTransformer(this.commuType, this.context);
-        this.emvInterface = SZZTApplication.getInstance().getMainApplication().getEmvInterface();
+        this.emvInterface =this.mainApplication.getEmvInterface();
     }
 
     public int parseProtocol(){

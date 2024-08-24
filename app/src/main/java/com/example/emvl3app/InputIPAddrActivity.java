@@ -2,22 +2,23 @@ package com.example.emvl3app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+
 public class InputIPAddrActivity extends AppCompatActivity {
 
-    Button buttonConfirm;
-    Button buttonCancel;
-    EditText editTextIPAddr;
-    EditText editTextPort;
-    Boolean bHasDefaultValue;
-    MainApplication mainApplication;
-    TCPClient tcpClient;
+    private Button buttonConfirm;
+    private Button buttonCancel;
+    private EditText editTextIPAddr;
+    private EditText editTextPort;
+    private Boolean bHasDefaultValue;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,8 +31,9 @@ public class InputIPAddrActivity extends AppCompatActivity {
         editTextIPAddr = (EditText)findViewById(R.id.editTextIpAddr);
         editTextPort = (EditText)findViewById(R.id.editTextIPPort);
 
-        mainApplication = SZZTApplication.getInstance().getMainApplication();
-        tcpClient = mainApplication.getTcpClient();
+
+        InputFilter[] filters = new InputFilter[] {new IPAddressFilter()};
+        editTextIPAddr.setFilters(filters);
 
         Intent resultIntent = new Intent();
 
@@ -42,7 +44,16 @@ public class InputIPAddrActivity extends AppCompatActivity {
         }
 
         buttonConfirm.setOnClickListener(v->{
-            uploadIPInfo();
+            if(editTextIPAddr.getText() != null && editTextPort.getText() != null){
+                resultIntent.putExtra("IpAddr", editTextIPAddr.getText().toString());
+                resultIntent.putExtra("Port", editTextPort.getText().toString());
+                resultIntent.putExtra("retCode", TypeDefine.EMV_OK);
+                Log.d("lishiyao", "uploadIPInfo: get text from dialog success");
+            }else{
+                resultIntent.putExtra("retCode", TypeDefine.EMV_ERR);
+                Log.d("lishiyao", "uploadIPInfo: get text from dialog fail");
+            }
+            setResult(RESULT_OK, resultIntent);
             finish();
         });
 
@@ -54,20 +65,4 @@ public class InputIPAddrActivity extends AppCompatActivity {
 
     }
 
-    private void uploadIPInfo(){
-        int retCode = TypeDefine.EMV_ERR;
-        Intent resultIntent = new Intent();
-
-        if(editTextIPAddr.getText() != null && editTextPort.getText() != null){
-            retCode = TypeDefine.EMV_OK;
-            resultIntent.putExtra("IpAddr", editTextIPAddr.getText());
-            resultIntent.putExtra("Port", editTextPort.getText());
-            resultIntent.putExtra("retCode", retCode);
-            Log.d("lishiyao", "uploadIPInfo: get text from dialog success");
-        }else{
-            resultIntent.putExtra("retCode", retCode);
-            Log.d("lishiyao", "uploadIPInfo: get text from dialog fail");
-        }
-        setResult(RESULT_OK, resultIntent);
-    }
 }

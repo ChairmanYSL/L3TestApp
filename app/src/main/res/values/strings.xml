@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">EMV L3 APP</string>
     <string name="menu0">菜单1</string>
+    <string name="menu1">菜单2</string>
+    <string name="menu2">菜单3</string>
     <string name="button_startTrans">开始交易</string>
     <string name="button_vireChecksum">内核版本</string>
     <string name="button_paramManage">参数管理</string>
     <string name="button_autoTest">自动测试</string>
     <string name="button_communicateType">通讯方式</string>
     <string name="button_transLog">交易日志</string>
-    <string name="menu1">测试菜单</string>
     <string name="button_version">版本信息</string>
     <string name="button_addTestAID">添加测试AID</string>
     <string name="button_sendTCP">发送TCP</string>
@@ -20,7 +21,7 @@
     <string name="select_serial_port">串口</string>
     <string name="select_network">网络</string>
     <string name="title_inputpin">请输入密码</string>
-    <string name="button_downloadaid">下载AID</string>
+    <string name="button_downloadaid">下载Config</string>
     <string name="button_downloadcapk">下载CAPK</string>
     <string name="button_downloadtermparam">下载终端参数</string>
     <string name="button_downloadexcpfile">下载异常文件</string>
@@ -31,4 +32,12 @@
     <string name="button_cancel">取消</string>
     <string name="text_ipaddr">IP地址</string>
     <string name="text_port">端口号</string>
+    <string name="text_input_amount">请输入交易金额，如无则默认0.00</string>
+    <string name="text_input_amount_oth">请输入其他金额,如无则不填</string>
+    <string name="text_input_transtype">请输入交易类型，默认00</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="prompt_exit">确定要退出应用吗</string>
+    <string name="clear">清除</string>
+    <string name="exit">退出</string>
 </resources>

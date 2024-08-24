@@ -1,11 +1,12 @@
 package com.example.emvl3app;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ParamManageActivity extends AppCompatActivity {
     private int commuType;
@@ -21,10 +22,8 @@ public class ParamManageActivity extends AppCompatActivity {
 
         Button buttonDownloadAID = (Button) findViewById(R.id.button_DownloadAID);
         Button buttonDownloadCAPK = (Button) findViewById(R.id.button_DownloadCAPK);
-        Button buttonDownloadTermParam = (Button) findViewById(R.id.button_DownloadTermParam);
         Button buttonDownloadExcpFile = (Button) findViewById(R.id.button_DownloadExcpFile);
         Button buttonDownloadRevokey = (Button) findViewById(R.id.button_DownloadRevokey);
-        Button buttonDownloadDRL = (Button) findViewById(R.id.button_DownloadDRL);
 
         buttonDownloadAID.setOnClickListener(v->{
             downloadAID();
@@ -34,9 +33,6 @@ public class ParamManageActivity extends AppCompatActivity {
             downloadCAPK();
         });
 
-        buttonDownloadTermParam.setOnClickListener(v->{
-            downloadTermParam();
-        });
 
         buttonDownloadExcpFile.setOnClickListener(v->{
             downloadExcptionFile();
@@ -44,10 +40,6 @@ public class ParamManageActivity extends AppCompatActivity {
 
         buttonDownloadRevokey.setOnClickListener(v->{
             downloadRevokey();
-        });
-
-        buttonDownloadDRL.setOnClickListener(v->{
-            downloadDRL();
         });
     }
 
@@ -82,21 +74,6 @@ public class ParamManageActivity extends AppCompatActivity {
         }
     }
 
-    private void downloadTermParam(){
-        byte [] sendData = new byte[]{(byte) 0x02, (byte) 0xC4, (byte) 0x00, (byte) 0x00};
-        byte [] recvData = new byte[1024];
-        int ret;
-
-        dataTransformer.send(sendData, 4);
-        ret = dataTransformer.receive(recvData, 1024, 2000);
-        if(ret > 0){
-            TransFlowProcessor transFlowProcessor = new TransFlowProcessor(recvData, this, commuType);
-            transFlowProcessor.parseProtocol();
-        }else{
-            Log.d("lishiyao", "downloadTermParam: download Term Param error");
-        }
-    }
-
     private void downloadExcptionFile(){
         byte [] sendData = new byte[]{(byte) 0x02, (byte) 0xC5, (byte) 0x00, (byte) 0x00};
         byte [] recvData = new byte[256];
@@ -126,20 +103,4 @@ public class ParamManageActivity extends AppCompatActivity {
             Log.d("lishiyao", "downloadRevokey: download Exception File error");
         }
     }
-
-    private void downloadDRL(){
-        byte [] sendData = new byte[]{(byte) 0x02, (byte) 0xC8, (byte) 0x00, (byte) 0x00};
-        byte [] recvData = new byte[256];
-        int ret;
-
-        dataTransformer.send(sendData, 4);
-        ret = dataTransformer.receive(recvData, 256, 2000);
-        if(ret > 0){
-            TransFlowProcessor transFlowProcessor = new TransFlowProcessor(recvData, this, commuType);
-            transFlowProcessor.parseProtocol();
-        }else{
-            Log.d("lishiyao", "downloadRevokey: download Exception File error");
-        }
-    }
-
 }

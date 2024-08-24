@@ -18,13 +18,18 @@ public class TCPClient {
     private Socket socket;
     private InputStream inputStream;
     private OutputStream outputStream;
-    private String ipAddress;
-    private int port;
+    private String ipAddress = "192.168.31.95";
+    private int port = 8765;
+    private static final int bufferSize = 2048;
 
-    public TCPClient() {
-        socket = null;
-        inputStream = null;
-        outputStream = null;
+    private TCPClient() {}
+
+    private static class TCPClientHolder{
+        private static final TCPClient INSTANCE = new TCPClient();
+    }
+
+    public static TCPClient getInstance(){
+        return TCPClientHolder.INSTANCE;
     }
 
     public int getPort(){
@@ -35,12 +40,12 @@ public class TCPClient {
         return ipAddress;
     }
 
-    public void connect(String ipAddress, int port, int bufferSize) throws IOException {
+    public void connect(String ipAddress, int port) throws IOException {
         Log.d("lishiyao", "start TCP connect");
         Log.d("lishiyao", "input bufferSize:"+bufferSize);
         socket = new Socket(ipAddress, port);
-        socket.setReceiveBufferSize(bufferSize);
-        socket.setSendBufferSize(bufferSize);
+        socket.setReceiveBufferSize(this.bufferSize);
+        socket.setSendBufferSize(this.bufferSize);
         inputStream = socket.getInputStream();
         outputStream = socket.getOutputStream();
         Log.d("lishiyao", "TCP connection established");

@@ -13,6 +13,15 @@ public class TypeDefine {
     public static final int EMV_ERR = -1;
     public static final int EMV_PARAM_INVALID = -2;
 
+    //
+    public static final int CARD_TYPE_CONTACTLESS = 2;
+    public static final int CARD_TYPE_CONTACT = 1;
+
+
+    public static final int ICC_NO_CARD = -100;
+    public static final int ICC_MULTICARD = -101;
+    public static final int ICC_RESET_CARD_ERR = -102;
+
     //Protocol Type Define,Management
     public static final int PROTOCOL_START_TRANS_SEND = 0xC0;
     public static final int PROTOCOL_START_TRANS_RECV = 0x80;

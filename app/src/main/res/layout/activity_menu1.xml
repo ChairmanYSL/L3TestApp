@@ -2,73 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:columnCount="2"
-        android:rowCount="3"
-        android:layout_gravity="center_horizontal">
+        android:rowCount="2"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"
+        android:alignmentMode="alignMargins"
+        android:useDefaultMargins="true">
+
+        <Button
+            android:text="@string/button_communicateType"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="fill_horizontal"
+            android:layout_columnWeight="1"
+            android:textSize="30sp"
+            android:id="@+id/button_CommuType">
+        </Button>
+
+        <Button
+            android:text="@string/button_transLog"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="fill_horizontal"
+            android:layout_columnWeight="1"
+            android:textSize="30sp"
+            android:id="@+id/button_TransLog">
+        </Button>
 
         <Button
             android:text="@string/button_version"
-            android:layout_width="180dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
+            android:layout_gravity="fill_horizontal"
+            android:layout_columnWeight="1"
+            android:textSize="30sp"
+            android:id="@+id/button_KernelVer">
         </Button>
 
         <Button
             android:text="@string/button_addTestAID"
-            android:layout_width="180dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_sendTCP"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_outcome"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_apdu"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center|top"
-            android:layout_margin="10dp"
-            android:padding="10dp">
-        </Button>
-
-        <Button
-            android:text="@string/button_random"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center|top"
-            android:layout_margin="10dp"
-            android:padding="10dp">
+            android:layout_gravity="fill_horizontal"
+            android:layout_columnWeight="1"
+            android:textSize="30sp"
+            android:id="@+id/button_AddTestAID">
         </Button>
     </GridLayout>
 </LinearLayout>

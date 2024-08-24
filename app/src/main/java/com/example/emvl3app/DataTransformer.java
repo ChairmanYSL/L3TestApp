@@ -22,6 +22,8 @@ public class DataTransformer {
     private Context context;
     private MainApplication mainApplication;
     private TCPClient tcpClient;
+    private SerialPort serialPort;
+    private int serialPortNum;
 
     public DataTransformer(int type, Context context){
         this.communicateType = type;

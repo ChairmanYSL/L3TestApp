@@ -1,8 +1,9 @@
 package com.example.emvl3app;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -18,6 +19,8 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
                 return new Menu0Fragment();
             case 1:
                 return new Menu1Fragment();
+            case 2:
+                return new Menu2Fragment();
             default:
                 return null;
         }
@@ -25,6 +28,6 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount(){
-        return 2;
+        return 3;
     }
 }
