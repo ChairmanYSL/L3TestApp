@@ -218,7 +218,8 @@ s32 sdkReadFile(const u8 *pasFile, u8 *pheDest, s32 siOffset, s32 *psiDestlen)
 
 s32 sdkInsertFile(const u8 *pasFile, const u8 *pheSrc, s32 siStart, s32 siSrclen)
 {
-	s32 fp,i,ret;
+	s32 i,ret;
+	FILE *fp;
 
     if (NULL == pasFile || NULL == pheSrc || siStart < 0 || siSrclen < 0) {
 		Trace("ddi", "Input Param invalid\r\n");

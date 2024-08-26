@@ -1419,7 +1419,7 @@ s32 sdkEMVBaseLoadAIDListFromSzztSDK(void)
 			TLVGroup = (u8 *)sdkGetMem(tlvLen);
 			memset(TLVGroup, 0, tlvLen);
 			memcpy(TLVGroup, aidSzzt+4, tlvLen);
-			TlvToAIDStruct(TLVGroup, tlvLen);
+			TlvToSzztAIDStruct(TLVGroup, tlvLen);
 			sdkFreeMem(TLVGroup);
 		}
 		else

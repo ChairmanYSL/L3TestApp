@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.szzt.sdk.device.card.ContactlessCardReader;
 import com.szzt.sdk.device.card.SmartCardReader;
 import com.szzt.sdk.device.emv.EMV_CONSTANTS;
+import com.szzt.sdk.device.emv.EMV_STATUS;
 import com.szzt.sdk.device.emv.EmvInterface;
 
 import java.util.Locale;
@@ -126,6 +127,7 @@ public class EMVProcessActivity extends AppCompatActivity {
 
     private void DealTrade() {
         int ret;
+        boolean readCardAgain=false;
 
         emvInterface.initialize(myHandler);
         ImportTradeAmount();
@@ -155,7 +157,8 @@ public class EMVProcessActivity extends AppCompatActivity {
                 }else{
                     break;
                 }
-            }else if(cardType == TypeDefine.CARD_TYPE_CONTACT){
+            }
+            else if(cardType == TypeDefine.CARD_TYPE_CONTACT){
                 if(ret == TypeDefine.ICC_RESET_CARD_ERR){
                     closeRFLogo();
                     textView.append("Read Card error,Tx Stop");
@@ -165,39 +168,61 @@ public class EMVProcessActivity extends AppCompatActivity {
                 }else{
                     break;
                 }
-            }else {
+            }
+            else {
                 closeRFLogo();
                 textView.append("Timeout exit");
                 finish();
             }
-        }
 
-        closeRFLogo();
-        textView.append("Processing");
+            closeRFLogo();
+            textView.append("Processing");
 
-        if(cardType == TypeDefine.CARD_TYPE_CONTACT){
-            smartCardReader.powerOff(0);
-            smartCardReader.close(0);
-            Log.d("lishiyao", "Contact Function not valid now");
-        }else if(cardType == TypeDefine.CARD_TYPE_CONTACTLESS){
-
-            if(!bIsSecondTap){
-                emvInterface.setCardType(TypeDefine.CARD_TYPE_CONTACTLESS);
+            if(cardType == TypeDefine.CARD_TYPE_CONTACT){
+                smartCardReader.powerOff(0);
+                smartCardReader.close(0);
+                Log.d("lishiyao", "Contact Function not valid now");
             }
-
-            while (true){
-                ret = emvInterface.process();
-                Log.d("lishiyao", "emvInterface.process ret = "+ret);
-                if(ret < 0){
-
+            else if(cardType == TypeDefine.CARD_TYPE_CONTACTLESS){
+                if(!bIsSecondTap){
+                    emvInterface.setCardType(TypeDefine.CARD_TYPE_CONTACTLESS);
                 }
 
+                while (true){
+                    ret = emvInterface.process();
+                    Log.d("lishiyao", "emvInterface.process ret = "+ret);
+                    if(ret < 0){
+                        contactlessCardReader.powerOff();
+                        contactlessCardReader.close();
+
+                        if(ret == TypeDefine.EMV_APDU_TIMEOUT){
+                            textView.append("Present Card Again\n");
+                            readCardAgain = true;
+                            break;
+                        }
+
+                        textView.append("End Application\n");
+                        break;
+                    }else if(ret > EMV_STATUS.EMV_OK && ret < EMV_STATUS.EMV_COMPLETED){
+                        switch (ret){
+                            case EMV_STATUS.EMV_STA_APP_SELECTED:
+                                PAYPASSSetBeforeGPO();
+                                break;
+                            case EMV_STATUS.EMV_REQ_ONLINE_PIN:
+
+                        }
+                    }
+                }
             }
 
+            if(readCardAgain){
+                continue;
+            }else{
+
+            }
+
+
         }
-
-
-
 
 
     }
@@ -318,6 +343,21 @@ public class EMVProcessActivity extends AppCompatActivity {
         }
 
         return ret;
+    }
+
+    private void PAYPASSSetBeforeGPO(){
+        byte transType=0x00;
+        byte buf [] = new byte[256];
+        byte aid [] = new byte[16];
+        int aidLen;
+
+        emvInterface.getTagData(0x9C, buf);
+        transType = buf[0];
+        aidLen = emvInterface.getTagData(0x4F, buf);
+        System.arraycopy(buf, 0, aid, 0, aidLen);
+
+        //TODO: 添加万事达自动化测试加载参数的处理
+
     }
 
 }

@@ -22,6 +22,8 @@ public class TypeDefine {
     public static final int ICC_MULTICARD = -101;
     public static final int ICC_RESET_CARD_ERR = -102;
 
+    public static final int EMV_APDU_TIMEOUT = -103;
+
     //Protocol Type Define,Management
     public static final int PROTOCOL_START_TRANS_SEND = 0xC0;
     public static final int PROTOCOL_START_TRANS_RECV = 0x80;
