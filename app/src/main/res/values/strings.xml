@@ -40,4 +40,5 @@
     <string name="prompt_exit">确定要退出应用吗</string>
     <string name="clear">清除</string>
     <string name="exit">退出</string>
+    <string name="bypass">跳过</string>
 </resources>

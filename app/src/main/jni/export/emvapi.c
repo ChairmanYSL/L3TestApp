@@ -758,12 +758,11 @@ int emv_initialize(EMV_INIT_PARAM* par)
 	return EMV_OK;
 }
 
-
 int emv_set_trans_amount(u32 amount)
 {
 	u8 amtBCD[6]={0};
 
-	sdkU32ToBcd(amtBCD, amount, sdkU32Len(amount));
+	sdkU32ToBcd(amtBCD, amount, sizeof(amtBCD));
 	sdkEMVBaseSetTwoTransAmount(amtBCD, NULL);
 
 	return EMV_OK;
@@ -773,7 +772,7 @@ int emv_set_other_amount(u32 amount)
 {
 	u8 amtBCD[6]={0};
 
-	sdkU32ToBcd(amtBCD, amount, sdkU32Len(amount));
+	sdkU32ToBcd(amtBCD, amount, sizeof(amtBCD));
 	sdkEMVBaseSetTwoTransAmount(NULL, amtBCD);
 
 	return EMV_OK;

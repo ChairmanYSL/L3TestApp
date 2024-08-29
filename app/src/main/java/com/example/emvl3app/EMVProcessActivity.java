@@ -1,5 +1,6 @@
 package com.example.emvl3app;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,6 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultCaller;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.szzt.sdk.device.card.ContactlessCardReader;
@@ -37,6 +42,9 @@ public class EMVProcessActivity extends AppCompatActivity {
     private int cardType;
     private Button buttonClear;
     private Button buttonExit;
+    private ActivityResultLauncher<Intent> inputPINActivityResultLauncher;
+    private String pinResult;
+    private String pinStr;
 
     private class MyHandler extends Handler {
         public MyHandler(Looper looper) {
@@ -91,6 +99,15 @@ public class EMVProcessActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        inputPINActivityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == Activity.RESULT_OK){
+                        Intent data = result.getData();
+                    }
+                }
+        );
 
         DealTrade();
     }
@@ -209,6 +226,13 @@ public class EMVProcessActivity extends AppCompatActivity {
                                 PAYPASSSetBeforeGPO();
                                 break;
                             case EMV_STATUS.EMV_REQ_ONLINE_PIN:
+                                Intent intent = new Intent(this, InputPINActivity.class);
+                                inputPINActivityResultLauncher.launch(intent);
+                                if(pinResult == null){
+                                    if(pinStr == null){
+//                                        emvInterface.setOnlinePinEntered(EMV_CONSTANTS.EMV_OPERRESULTS.EMV_OPER_CANCEL, )
+                                    }
+                                }
 
                         }
                     }

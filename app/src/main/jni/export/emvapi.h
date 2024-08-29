@@ -167,7 +167,40 @@ enum emv_error_info
 ************************************************************************************************************************
 */
 
+typedef struct
+{
+	unsigned char AidLen;
+	unsigned char Aid[16];
+	unsigned char TransCurcyCode[2];			 //tag'5F2A'
+	unsigned char TransCurcyExp;				 //tag'5F36'
+	unsigned char TransReferCurcyCode[2];		 //tag'9F3C'
+	unsigned char TransReferCurcyExp;			 //tag'9F3D'
+	unsigned char AcquireID[6]; 				 //tag'9F01'
+	unsigned char TermID[8];					 //tag'9F1C'
+	unsigned char MerchCateCode[2]; 			 //tag'9F15'
+	unsigned char MerchID[15];					 //tag'9F16'
+	unsigned char MerchantNameLen;
+	unsigned char MerchantName[20];
+	unsigned char TRMDataLen;
+	unsigned char TRMData[8];					//tag'9F1D'
+	unsigned char TermTDOLLen;
+	unsigned char TermTDOL[64];
+	unsigned char TermTransPredicable[4];
+	unsigned char terminalcapability[3];
+	unsigned char terminaladdcapability[5];
+	unsigned char terminaltype;
+	unsigned char tradetypevalue;		//if for all transcation type set transvaule 0xFF, otherwise set transvaule with tag9C
+	unsigned char reservedlen;
+	unsigned char reserved[128];
 
+	unsigned char ondevRTCL[6];
+	unsigned char KernelID;
+	unsigned char KernelConfigure;
+	unsigned char magcvmrequirer;
+	unsigned char magnocvmrequirer;
+	unsigned char PaypassMagVer[2]; 			//paypass magstripe version
+	unsigned char trm[8];				//20151207_lhd add this line
+}SDK_PAYPASS_APPEX_AID_STRUCT;
 
 typedef struct
 {

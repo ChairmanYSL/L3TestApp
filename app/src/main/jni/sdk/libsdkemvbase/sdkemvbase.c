@@ -104,13 +104,27 @@ unsigned char sdkEMVBaseSetNeedcmpKernelid(unsigned char mode)
 	return SDK_OK;
 }
 
+
 int sdkEMVBase_CheckMatchTermAID_CL(unsigned char* aid,unsigned char aidLen,EMVBASE_TERMAPP *Applist,unsigned char* kernelid,unsigned char kernelidlen)
 {
     unsigned char i;
     unsigned char matchflag = 0;
     unsigned char capkmatchflag = 1;
-	u8 type = emvbase_avl_gettagvalue(EMVTAG_TransTypeValue);
+	int cmpkernelidresult=0;
+	u8 type;
 
+	type = emvbase_avl_gettagvalue(EMVTAG_TransTypeValue);
+
+#ifdef SDKTINYQUICKPASS
+	if(memcmp(aid,"\xA0\x00\x00\x03\x33",5) == 0)
+	{
+		return 1;
+	}
+	return -1;
+#else
+
+	bool BisBancomatAID=false;
+	u8 j=0;
 
 	Trace("emv","contactless 9C=%02X\r\n",type);
 	TraceHex("emv","contactless aid:\r\n",aid, aidLen);
@@ -135,6 +149,20 @@ int sdkEMVBase_CheckMatchTermAID_CL(unsigned char* aid,unsigned char aidLen,EMVB
 
 			if(matchflag)
 			{
+				if((gstsdkemvbaseExFuncSet.BisNeedcmpKernelid)&&(gstsdkemvbaseExFuncSet.cmpKernelID))
+				{
+					cmpkernelidresult = gstsdkemvbaseExFuncSet.cmpKernelID(type,aid,aidLen,gEmvbaseAidIndex[i].ASI,kernelid,kernelidlen);
+					Trace("emv","cmp KernelID func, result=%d\r\n",cmpkernelidresult);
+					if( SDK_EQU != cmpkernelidresult )
+					{
+						continue;
+					}
+				}
+				else
+				{
+					Trace("emv","warning: cmp KernelID func is NULL or BisNeedcmpKernelid=%d \r\n",gstsdkemvbaseExFuncSet.BisNeedcmpKernelid);
+				}
+
 				Applist->ASI = gEmvbaseAidIndex[i].ASI;
 				Applist->AIDLen = gEmvbaseAidIndex[i].AIDLen;
 				memcpy(&Applist->AID[0], &gEmvbaseAidIndex[i].AID[0], 16);
@@ -166,6 +194,20 @@ int sdkEMVBase_CheckMatchTermAID_CL(unsigned char* aid,unsigned char aidLen,EMVB
 
 			if(matchflag)
 			{
+				if((gstsdkemvbaseExFuncSet.BisNeedcmpKernelid)&&(gstsdkemvbaseExFuncSet.cmpKernelID))
+				{
+					cmpkernelidresult = gstsdkemvbaseExFuncSet.cmpKernelID(type,aid,aidLen,gEmvbaseAidIndex[i].ASI,kernelid,kernelidlen);
+					Trace("emv","cmp KernelID func, result=%d\r\n",cmpkernelidresult);
+					if( SDK_EQU != cmpkernelidresult )
+					{
+						continue;
+					}
+				}
+				else
+				{
+					Trace("emv","warning: cmp KernelID func is NULL or BisNeedcmpKernelid=%d \r\n",gstsdkemvbaseExFuncSet.BisNeedcmpKernelid);
+				}
+
 				Applist->ASI = gEmvbaseAidIndex[i].ASI;
 				Applist->AIDLen = gEmvbaseAidIndex[i].AIDLen;
 				memcpy(&Applist->AID[0], &gEmvbaseAidIndex[i].AID[0], 16);
@@ -197,6 +239,20 @@ int sdkEMVBase_CheckMatchTermAID_CL(unsigned char* aid,unsigned char aidLen,EMVB
 
 			if(matchflag)
 			{
+				if((gstsdkemvbaseExFuncSet.BisNeedcmpKernelid)&&(gstsdkemvbaseExFuncSet.cmpKernelID))
+				{
+					cmpkernelidresult = gstsdkemvbaseExFuncSet.cmpKernelID(type,aid,aidLen,gEmvbaseAidIndex[i].ASI,kernelid,kernelidlen);
+					Trace("emv","cmp KernelID func, result=%d\r\n",cmpkernelidresult);
+					if( SDK_EQU != cmpkernelidresult )
+					{
+						continue;
+					}
+				}
+				else
+				{
+					Trace("emv","warning: cmp KernelID func is NULL or BisNeedcmpKernelid=%d \r\n",gstsdkemvbaseExFuncSet.BisNeedcmpKernelid);
+				}
+
 				Applist->ASI = gEmvbaseAidIndex[i].ASI;
 				Applist->AIDLen = gEmvbaseAidIndex[i].AIDLen;
 				memcpy(&Applist->AID[0], &gEmvbaseAidIndex[i].AID[0], 16);
@@ -228,6 +284,20 @@ int sdkEMVBase_CheckMatchTermAID_CL(unsigned char* aid,unsigned char aidLen,EMVB
 
 			if(matchflag)
 			{
+				if((gstsdkemvbaseExFuncSet.BisNeedcmpKernelid)&&(gstsdkemvbaseExFuncSet.cmpKernelID))
+				{
+					cmpkernelidresult = gstsdkemvbaseExFuncSet.cmpKernelID(type,aid,aidLen,gEmvbaseAidIndex[i].ASI,kernelid,kernelidlen);
+					Trace("emv","cmp KernelID func, result=%d\r\n",cmpkernelidresult);
+					if( SDK_EQU != cmpkernelidresult )
+					{
+						continue;
+					}
+				}
+				else
+				{
+					Trace("emv","warning: cmp KernelID func is NULL or BisNeedcmpKernelid=%d \r\n",gstsdkemvbaseExFuncSet.BisNeedcmpKernelid);
+				}
+
 				Applist->ASI = gEmvbaseAidIndex[i].ASI;
 				Applist->AIDLen = gEmvbaseAidIndex[i].AIDLen;
 				memcpy(&Applist->AID[0], &gEmvbaseAidIndex[i].AID[0], 16);
@@ -239,7 +309,7 @@ int sdkEMVBase_CheckMatchTermAID_CL(unsigned char* aid,unsigned char aidLen,EMVB
 
 	Trace("emv","emv error ! not match aid\r\n");
     return -1;		// -1 means not find
-
+ #endif
 }
 
 

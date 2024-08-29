@@ -4,11 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -28,9 +24,35 @@
                 android:maxLines="1">
             </EditText>
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/button_confirm_pin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/confirm"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+                <Button
+                    android:id="@+id/button_cancel_pin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+                <Button
+                    android:id="@+id/button_bypass_pin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bypass"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
         </LinearLayout>
-    </ScrollView>
+     </LinearLayout>
 </LinearLayout>

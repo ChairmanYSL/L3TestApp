@@ -12258,10 +12258,8 @@ unsigned char Paypass_TransProcess1(PAYPASSTradeUnionStruct *tempApp_UnionStruct
     }
 	else
 	{
-        #ifdef EMVB_DEBUG
         EMVBase_Trace("\r\n paypass-error: S10.ED20 no \r\n");
         EMVBase_Trace("\r\n paypass-error: S11.ED23 NO \r\n");
-        #endif
 
         if (tempApp_UnionStruct->displayRemoveCard)
         {
